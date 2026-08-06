@@ -52,3 +52,12 @@ df = pd.get_dummies(df, columns=[
 ], drop_first=True)
 df.head()
 df.dtypes
+
+x = df.drop("Default",axis=1)
+y = df["Default"]
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+print(f"x_train shape: {x_train.shape}")
+print(f"x_test shape: {x_test.shape}")
+print(f"y_train shape: {y_train.shape}")
+print(f"y_test shape: {y_test.shape}")
