@@ -61,3 +61,13 @@ print(f"x_train shape: {x_train.shape}")
 print(f"x_test shape: {x_test.shape}")
 print(f"y_train shape: {y_train.shape}")
 print(f"y_test shape: {y_test.shape}")
+
+#Applying SMOTE
+smote = SMOTE(random_state=42)
+x_train_smote, y_train_smote = smote.fit_resample(x_train, y_train)
+
+print("Before SMOTE:")
+print(y_train.value_counts())
+
+print("\nAfter SMOTE:")
+print(y_train_smote.value_counts())
