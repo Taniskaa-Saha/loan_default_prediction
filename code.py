@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (
+    ConfusionMatrixDisplay,
     accuracy_score,
     confusion_matrix,
     classification_report,
@@ -71,3 +72,19 @@ print(y_train.value_counts())
 
 print("\nAfter SMOTE:")
 print(y_train_smote.value_counts())
+
+#create RandomForest model
+rf_model = RandomForestClassifier(random_state=42)
+rf_model.fit(x_train_smote, y_train_smote)
+y_pred = rf_model.predict(x_test)
+print(y_pred[:10])
+
+#Model Evaluation
+#generate confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
+plt.title("Confusion Matrix")
+plt.show()
+print(classification_report(y_test, y_pred))
