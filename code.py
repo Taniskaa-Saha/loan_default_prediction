@@ -13,6 +13,7 @@ from sklearn.metrics import (
 
 from imblearn.over_sampling import SMOTE #imbalanced dataset
 
+
 df = pd.read_csv("Data/Loan_default.csv")
 df.info()
 
@@ -144,3 +145,24 @@ print(classification_report(y_test, y_pred_best))
 #Confusion matrix for best threshold
 cm_best = confusion_matrix(y_test, y_pred_best)
 print(cm_best)
+
+
+# ==============================
+# SAVE FINAL MODEL
+# ==============================
+import joblib
+import os
+os.makedirs("model", exist_ok=True)
+
+# Save the trained Random Forest model
+joblib.dump(rf_model, "model/loan_default_model.pkl")
+
+# Save the feature names used by the model
+joblib.dump(x_train.columns.tolist(), "model/feature_columns.pkl")
+
+# Save the final threshold
+joblib.dump(best_threshold, "model/threshold.pkl")
+
+print("Model saved successfully!")
+print("Threshold:", best_threshold)
+print("Number of features:", len(x_train.columns))
