@@ -4,9 +4,14 @@ import joblib
 
 
 # Load Model Artifacts
-model = joblib.load("model/loan_default_model.pkl")
-feature_columns = joblib.load("model/feature_columns.pkl")
-threshold = joblib.load("model/threshold.pkl")
+@st.cache_resource
+def load_model_files():
+    model = joblib.load("model/loan_default_model.pkl")
+    feature_columns = joblib.load("model/feature_columns.pkl")
+    threshold = joblib.load("model/threshold.pkl")
+    return model, feature_columns, threshold
+
+model, feature_columns, threshold = load_model_files()
 
 
 # Page Configuration
@@ -38,14 +43,16 @@ with col1:
         "Age",
         min_value=18,
         max_value=100,
-        value=30
+        value=25,
+        step=1
     )
 
 with col2:
     income = st.number_input(
         "Income",
         min_value=0,
-        value=50000
+        value=50000,
+        step=1000
     )
 
 with col3:
