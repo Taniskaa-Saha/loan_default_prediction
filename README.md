@@ -118,6 +118,11 @@ Selected Threshold	0.27
 
 The threshold was adjusted to place greater emphasis on identifying potential default cases rather than relying solely on overall accuracy.
 
+## Live Demo
+
+Try the deployed Loan Default Prediction application:
+[Launch Stream lit App](https://loan-default-prediction-new.streamlit.app/)
+
 
 ##Key Result - 
 
