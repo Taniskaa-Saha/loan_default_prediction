@@ -5,3 +5,4 @@ imbalanced-learn
 joblib
 fastapi
 uvicorn
+streamlit
